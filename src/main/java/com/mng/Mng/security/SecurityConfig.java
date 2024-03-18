@@ -45,7 +45,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(x ->
                         x.requestMatchers("v1/api/auth/**"
-                                , "/v1/api/auth/signup",
+                                , "/v1/api/auth/signUp",
                                 "/v1/api/auth/refresh",
                                 "/v1/api/auth/signIn",
                                 "/swagger-ui/index.html",
@@ -53,9 +53,9 @@ public class SecurityConfig {
                                 "/swagger-ui/**").permitAll()
                 )
                 .authorizeHttpRequests(x ->
-                        x.requestMatchers("/v1/api/users/allUsers").hasRole("USER")
-                                .requestMatchers("/v1/api/user/create").hasRole("ADMIN")
-
+                        x.requestMatchers("/v1/api/users/allUsers","/v1/api/offices/**"
+                                        ,"/v1/api/locations/**","v1/api/users/email/{email}",
+                                "/v1/api/actions/**","/v1/api/questions/**").hasRole("USER")
                 )
                 .sessionManagement(x -> x.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())

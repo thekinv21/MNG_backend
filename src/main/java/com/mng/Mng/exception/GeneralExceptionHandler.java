@@ -42,5 +42,17 @@ public class GeneralExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(InvalidInputException.class)
     public ResponseEntity<?> ExceptionHandler(InvalidInputException invalidInputException){
         return new ResponseEntity<>(invalidInputException.getMessage(),HttpStatus.BAD_REQUEST);
+    }//
+    @ExceptionHandler(OfficeNotFoundException.class)
+    public ResponseEntity<?> ExceptionHandler(OfficeNotFoundException officeNotFoundException){
+        return new ResponseEntity<>(officeNotFoundException.getMessage(),HttpStatus.NOT_FOUND);
+    }
+    @ExceptionHandler(LocationNotFoundException.class)
+    public ResponseEntity<?> ExceptionHandler(LocationNotFoundException locationNotFoundException){
+        return new ResponseEntity<>(locationNotFoundException.getMessage(),HttpStatus.NOT_FOUND);
+    }//
+    @ExceptionHandler(ActionNotFoundException.class)
+    public ResponseEntity<?> ExceptionHandler(ActionNotFoundException actionNotFoundException){
+        return new ResponseEntity<>(actionNotFoundException.getMessage(),HttpStatus.NOT_FOUND);
     }
 }

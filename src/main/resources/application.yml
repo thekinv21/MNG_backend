@@ -5,8 +5,8 @@ spring:
     allow-bean-definition-overriding: true
   datasource:
     url: jdbc:mysql://localhost:3306/mng
-    username: root
-    password: 197619er
+    username: cinar
+    password: cinar-1907
     hikari:
       max-lifetime: 300000
   jpa:
@@ -14,3 +14,12 @@ spring:
       ddl-auto: update
     show-sql: true
     database-platform: org.hibernate.dialect.MySQL8Dialect
+
+jwt:
+  secret: mYiADZOy9Hq5pTfomhj9hPUJLGAN/ZB6AZ4yoHfCtN0f8DaNQr6+4qeaJ9YfMK4ZbX85J3ao6TotW+jrLKLGeafpaYYLn2mmrYOB/1mJzhQYEaf883PtWAIwnTwHpPuEsJAhyHwEtlTvy++pZA+0bns66RUDBk80bJUA4JhJUI8=
+  expiration: 86400000
+  refresh-token:
+    expiration: 604800000
+application:
+  description: Spring Boot Mng Detect Location Backend
+  version: 2.0

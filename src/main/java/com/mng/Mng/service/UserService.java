@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -37,7 +38,7 @@ public class UserService implements UserDetailsService {
         Pageable pageable = PageRequest.of(pageNo, pageSize);
         Page<User> users = userRepository.findAll(pageable);
         List<User> userList = users.getContent();
-        List<UserDto> content = userList.stream().map(user -> modelMapper.map(user, UserDto.class)).toList();
+        List<UserDto> content = userList.stream().map(user -> modelMapper.map(user, UserDto.class)).collect(Collectors.toList());
         UserResponse userResponse = new UserResponse();
         userResponse.setContent(content);
         userResponse.setPageNo(users.getNumber());
@@ -86,4 +87,6 @@ public class UserService implements UserDetailsService {
     public User createNewUser(CreateUserRequest createUserRequest){
         User user = createUserFromRequest(createUserRequest);
         return userRepository.save(user);
-    }}
+    }
+
+}
