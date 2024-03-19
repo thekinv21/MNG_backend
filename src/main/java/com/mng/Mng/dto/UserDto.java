@@ -16,6 +16,9 @@ public class UserDto {
     private String firstName;
     private String lastName;
     private String email;
+    private String phoneNumber;
+    private List<Role> authorities;
+    private LocationDto location;
     private String password;
     private String phoneNumber;
     private List<Role> authorities;

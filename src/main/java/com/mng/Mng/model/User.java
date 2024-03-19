@@ -7,6 +7,8 @@ import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
@@ -34,6 +36,12 @@ public class User extends BaseEntity implements UserDetails {
     @Column(name = "authority", nullable = false)
     @Enumerated(EnumType.STRING)
     private List<Role> authorities;
+
+    @OneToOne(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private Location location;
+
+    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Action> actions;
     public User(String firstName, String lastName, String email, String password, String phoneNumber, List<Role> authorities) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -66,5 +74,9 @@ public class User extends BaseEntity implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+    public void addAction(Action action1){
+        if(actions==null) actions=new ArrayList<>();
+        actions.add(action1);
     }
 }
