@@ -19,4 +19,7 @@ public class UserDto {
     private String phoneNumber;
     private List<Role> authorities;
     private LocationDto location;
+    private String password;
+    private String phoneNumber;
+    private List<Role> authorities;
 }
