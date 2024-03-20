@@ -8,6 +8,7 @@ import com.mng.Mng.dto.response.JwtAuthenticationResponse;
 import com.mng.Mng.dto.response.UserResponse;
 import com.mng.Mng.exception.InvalidInputException;
 import com.mng.Mng.exception.UserNotFoundException;
+import com.mng.Mng.exception.WrongPasswordException;
 import com.mng.Mng.model.Role;
 import com.mng.Mng.model.Token;
 import com.mng.Mng.model.TokenType;
@@ -118,6 +119,9 @@ public class AuthService {
 
         var user = userRepository.findUserByEmail(signInRequest.getEmail())
                 .orElseThrow(() -> new UserNotFoundException("User not found with this email"+signInRequest.getEmail()));
+       /* if(!user.getPassword().equals(signInRequest.getPassword())) {
+            throw new WrongPasswordException("Wrong password");
+        }*/
         var jwtToken = jwtService.generateToken(user);
         var refreshToken = jwtService.generateRefreshToken(user);
         revokeAllUserTokens(user);
