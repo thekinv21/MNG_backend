@@ -55,4 +55,8 @@ public class GeneralExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<?> ExceptionHandler(ActionNotFoundException actionNotFoundException){
         return new ResponseEntity<>(actionNotFoundException.getMessage(),HttpStatus.NOT_FOUND);
     }
+    @ExceptionHandler(WrongPasswordException.class)
+    public ResponseEntity<?> ExceptionHandler(WrongPasswordException wrongPasswordException){
+        return new ResponseEntity<>(wrongPasswordException.getMessage(),HttpStatus.BAD_REQUEST);
+    }
 }

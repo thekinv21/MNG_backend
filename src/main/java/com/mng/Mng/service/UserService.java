@@ -40,7 +40,6 @@ public class UserService implements UserDetailsService {
         Page<User> users = userRepository.findAll(pageable);
         List<User> userList = users.getContent();
         List<UserDto> content = userList.stream().map(user -> modelMapper.map(user, UserDto.class)).collect(Collectors.toList());
-        List<UserDto> content = userList.stream().map(user -> modelMapper.map(user, UserDto.class)).toList();
         UserResponse userResponse = new UserResponse();
         userResponse.setContent(content);
         userResponse.setPageNo(users.getNumber());
@@ -94,4 +93,3 @@ public class UserService implements UserDetailsService {
 
 }
 
-    }}

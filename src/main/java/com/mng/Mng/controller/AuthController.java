@@ -25,8 +25,6 @@ public class AuthController {
         this.authService = authService;
     }
 
-    @PostMapping("/signUp")
-=======
     @PostMapping("/signup")
     public ResponseEntity<JwtAuthenticationResponse> signUp(@RequestBody SignUpRequest signUpRequest) {
         return ResponseEntity.ok(authService.signUpNewUser(signUpRequest));

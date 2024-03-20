@@ -2,10 +2,7 @@ package com.mng.Mng.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
@@ -23,6 +20,7 @@ public class Action extends BaseEntity {
 
     private String photographName;
     private String imageUrl;
+    @Getter
     private LocalDateTime createdDate;
     private boolean isActive;
     @ManyToOne(fetch = FetchType.LAZY)
@@ -32,13 +30,6 @@ public class Action extends BaseEntity {
     @OneToMany(mappedBy = "action",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Question> questions;
 
-    public Action(String photographName, String imageUrl,LocalDateTime createdDate, boolean isActive) {
-        this.photographName = photographName;
-        this.imageUrl = imageUrl;
-        this.createdDate = createdDate;
-        this.isActive = isActive;
-    }
-
     public Action(String photographName, String imageUrl,LocalDateTime createdDate, boolean isActive, User user) {
         this.photographName = photographName;
         this.imageUrl = imageUrl;
@@ -47,21 +38,20 @@ public class Action extends BaseEntity {
         this.user = user;
     }
 
-    public Action(String photographName, String imageUrl,LocalDateTime createdDate, User user) {
-        this.photographName = photographName;
-        this.imageUrl = imageUrl;
-        this.createdDate = createdDate;
-        this.user = user;
-    }
-
-    public Action(String photographName, String imageUrl,LocalDateTime createdDate) {
-        this.photographName = photographName;
-        this.imageUrl = imageUrl;
-        this.createdDate = createdDate;
-    }
 
     public void addQuestion(Question question1){
         if(questions==null) questions=new ArrayList<>();
         questions.add(question1);
+    }
+
+    @Override
+    public String toString() {
+        return "Action{" +
+                "photographName='" + photographName + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", createdDate=" + createdDate +
+                ", isActive=" + isActive +
+                ", questions=" + questions +
+                '}';
     }
 }
