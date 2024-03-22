@@ -38,6 +38,7 @@ public class Office extends BaseEntity{
         this.address = new Adress(city,district,street,number);
 
     }
+
     }
 
 }

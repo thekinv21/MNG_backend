@@ -19,6 +19,8 @@ public  class Location {
     private Integer id;
     private double latitude;
     private double longitude;
+    private double longitudeDelta;
+    private double latitudeDelta;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
@@ -26,20 +28,27 @@ public  class Location {
     @JoinColumn(name = "office_id", referencedColumnName = "id")
     private Office office;
 
-    public Location(double latitude, double longitude) {
+    public Location(double latitude, double longitude, double longitudeDelta, double latitudeDelta) {
         this.latitude = latitude;
         this.longitude = longitude;
+        this.longitudeDelta = longitudeDelta;
+        this.latitudeDelta = latitudeDelta;
     }
 
-    public Location(double latitude, double longitude, User user) {
+    public Location(double latitude, double longitude, double longitudeDelta, double latitudeDelta, User user) {
         this.latitude = latitude;
         this.longitude = longitude;
+        this.longitudeDelta = longitudeDelta;
+        this.latitudeDelta = latitudeDelta;
         this.user = user;
     }
 
-    public Location(double latitude, double longitude, Office office) {
+    public Location(double latitude, double longitude, double longitudeDelta, double latitudeDelta, Office office) {
         this.latitude = latitude;
         this.longitude = longitude;
+        this.longitudeDelta = longitudeDelta;
+        this.latitudeDelta = latitudeDelta;
         this.office = office;
     }
+
 }
