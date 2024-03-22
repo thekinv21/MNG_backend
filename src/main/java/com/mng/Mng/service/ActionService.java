@@ -47,8 +47,6 @@ public class ActionService {
 
     public Action createAction(String email,Action action){
         var user = userService.getUserByEmail(email);
-        var currentDate = LocalDateTime.now();
-
         var action1 = new Action(action.getPhotographName(),action.getImageUrl(), LocalDateTime.now(),true,user);
         user.addAction(action1);
         return actionRepository.save(action1);

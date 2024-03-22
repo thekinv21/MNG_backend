@@ -13,4 +13,6 @@ public class LocationDto {
     private Integer id;
     private double latitude;
     private double longitude;
+    private double longitudeDelta;
+    private double latitudeDelta;
 }

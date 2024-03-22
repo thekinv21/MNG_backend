@@ -30,14 +30,14 @@ public class LocationService {
 
     public Location addLocationToUser(String email, LocationDto dto){
         var user = userService.getUserByEmail(email);
-        Location location = new Location(dto.getLatitude(),dto.getLongitude());
+        Location location = new Location(dto.getLatitude(),dto.getLongitude(),dto.getLatitudeDelta(),dto.getLongitudeDelta());
         user.setLocation(location);
         location.setUser(user);
         return locationRepository.save(location);
     }
     public Location addLocationToOffice(String id, LocationDto dto){
         var office = officeService.getOfficeById(id);
-        Location location = new Location(dto.getLatitude(),dto.getLongitude());
+        Location location = new Location(dto.getLatitude(),dto.getLongitude(),dto.getLatitudeDelta(),dto.getLongitudeDelta());
         if (office.getLocation() != null) {
             locationRepository.delete(office.getLocation());
         }
@@ -50,6 +50,8 @@ public class LocationService {
         var location = getLocationById(id);
         location.setLatitude(dto.getLatitude());
         location.setLongitude(dto.getLongitude());
+        location.setLatitudeDelta(dto.getLatitudeDelta());
+        location.setLongitudeDelta(dto.getLongitudeDelta());
         user.setLocation(location);
         location.setUser(user);
         return locationRepository.save(location);
@@ -60,6 +62,8 @@ public class LocationService {
         var location = getLocationById(id);
         location.setLatitude(dto.getLatitude());
         location.setLongitude(dto.getLongitude());
+        location.setLatitudeDelta(dto.getLatitudeDelta());
+        location.setLongitudeDelta(dto.getLongitudeDelta());
         office.setLocation(location);
         location.setOffice(office);
         return locationRepository.save(location);
