@@ -27,13 +27,13 @@ public class LocationController {
     public ResponseEntity<LocationDto> addLocationToUser(@PathVariable String email, @RequestBody LocationDto dto){
         var location = locationService.addLocationToUser(email,dto);
         return ResponseEntity.ok(modelMapper.map(location,LocationDto.class));
-    }
+    }/*
     @PostMapping("/create/office/{id}")
     public ResponseEntity<LocationDto> addLocationToOffice(@PathVariable String id, @RequestBody LocationDto dto){
         var location = locationService.addLocationToOffice(id,dto);
 
         return ResponseEntity.ok(modelMapper.map(location,LocationDto.class));
-    }
+    }*/
     @PutMapping("/update/{id}/user/{email}")
     public ResponseEntity<LocationDto> updateLocationToUser(@PathVariable Integer id,@PathVariable String email, @RequestBody LocationDto dto) {
         var location = locationService.updateLocationToUser(id, email, dto);
