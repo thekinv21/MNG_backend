@@ -5,6 +5,7 @@ import com.mng.Mng.dto.UserDto;
 import com.mng.Mng.dto.request.CreateOfficeRequest;
 import com.mng.Mng.dto.response.OfficeResponse;
 import com.mng.Mng.exception.OfficeNotFoundException;
+import com.mng.Mng.model.Location;
 import com.mng.Mng.model.Office;
 import com.mng.Mng.repository.OfficeRepository;
 import org.modelmapper.ModelMapper;
@@ -49,9 +50,13 @@ public class OfficeService {
         return officeRepository.findByOfficeName(officeName).orElseThrow(() -> new OfficeNotFoundException("Office not found with this name: " + officeName));
     }
     public Office createOffice(CreateOfficeRequest request){
+        Location location = new Location(request.getLocation().getLatitude(),request.getLocation().getLongitude()
+                ,request.getLocation().getLatitudeDelta(),request.getLocation().getLongitudeDelta());
 
         Office office = new Office(request.getOfficeName(),request.getOfficePhone(),request.getOfficePhoto(),request.getCity()
-                ,request.getDistrict(),request.getStreet(),request.getNumber());
+                ,request.getDistrict(),request.getStreet(),request.getNumber(),location);
+        office.setLocation(location);
+        location.setOffice(office);
         return officeRepository.save(office);
 
     }
