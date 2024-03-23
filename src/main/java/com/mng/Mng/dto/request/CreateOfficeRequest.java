@@ -1,5 +1,6 @@
 package com.mng.Mng.dto.request;
 
+import com.mng.Mng.dto.LocationDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,4 +19,5 @@ public class CreateOfficeRequest {
     private String district;
     private String street;
     private String number;
+    private LocationDto location;
 }

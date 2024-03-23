@@ -33,16 +33,18 @@ public class Office extends BaseEntity{
     private Location location;
 
 
-    public Office(String officeName,String officePhone,String officePhoto,String city,
+    public Office(String officeName, String officePhone, String officePhoto, String city,
                   String district,
                   String street,
-                  String number){ {
+                  String number,Location location){ {
         this.officeName = officeName;
         this.officePhone = officePhone;
         this.officePhoto = officePhoto;
         this.address = new Adress(city,district,street,number);
+        this.location = location;
 
     }
+
 
     }
 
