@@ -18,6 +18,8 @@ import lombok.experimental.SuperBuilder;
 public class Office extends BaseEntity{
 
     private String officeName;
+    private String officePhone;
+    private String officePhoto;
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "city", column = @Column(name = "city")),
@@ -30,11 +32,14 @@ public class Office extends BaseEntity{
     @OneToOne(mappedBy = "office",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Location location;
 
-    public Office(String officeName,String city,
+
+    public Office(String officeName,String officePhone,String officePhoto,String city,
                   String district,
                   String street,
                   String number){ {
         this.officeName = officeName;
+        this.officePhone = officePhone;
+        this.officePhoto = officePhoto;
         this.address = new Adress(city,district,street,number);
 
     }

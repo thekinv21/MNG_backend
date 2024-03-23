@@ -50,7 +50,7 @@ public class OfficeService {
     }
     public Office createOffice(CreateOfficeRequest request){
 
-        Office office = new Office(request.getOfficeName(),request.getCity()
+        Office office = new Office(request.getOfficeName(),request.getOfficePhone(),request.getOfficePhoto(),request.getCity()
                 ,request.getDistrict(),request.getStreet(),request.getNumber());
         return officeRepository.save(office);
 
