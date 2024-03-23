@@ -34,7 +34,7 @@ public class LocationService {
         user.setLocation(location);
         location.setUser(user);
         return locationRepository.save(location);
-    }
+    }/*
     public Location addLocationToOffice(String id, LocationDto dto){
         var office = officeService.getOfficeById(id);
         Location location = new Location(dto.getLatitude(),dto.getLongitude(),dto.getLatitudeDelta(),dto.getLongitudeDelta());
@@ -44,7 +44,7 @@ public class LocationService {
         office.setLocation(location);
         location.setOffice(office);
         return locationRepository.save(location);
-    }
+    }*/
     public Location updateLocationToUser(Integer id, String email,LocationDto dto){
         var user = userService.getUserByEmail(email);
         var location = getLocationById(id);
