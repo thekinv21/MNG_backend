@@ -13,6 +13,8 @@ import lombok.NoArgsConstructor;
 public class OfficeDto {
     private String id;
     private String officeName;
+    private String officePhone;
+    private String officePhoto;
     private LocationDto location;
     private Adress adress;
 }

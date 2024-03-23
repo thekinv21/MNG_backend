@@ -12,6 +12,8 @@ import lombok.NoArgsConstructor;
 public class CreateOfficeRequest {
 
     private String officeName;
+    private String officePhone;
+    private String officePhoto;
     private String city;
     private String district;
     private String street;
